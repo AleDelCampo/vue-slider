@@ -53,7 +53,7 @@ createApp({
                 thumbnail.classList.remove("active");
             });
 
-            thumbnails[index].classList.add("active");
+            thumbnails[index + 1].classList.add("active");
         },
 
         startAutoplay: function() {
