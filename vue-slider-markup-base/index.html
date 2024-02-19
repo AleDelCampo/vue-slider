@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <button id="startBtn" @click="startAutoplay">Start Autoplay</button>
+            <div class="slider-wrapper" tabindex="0">
+
+                <div class="item" id="app" @mouseover="stopAutoplay" @mouseout="startAutoplay">
+
+                    <img  
+                    v-for="(currentImage, index) in slides.images" 
+                    :src='currentImage' 
+                    v-show="index == thisSlideIndex"
+                    />
+
+                    <div class="text">
+                        <h3>
+                            {{ slides.titles[thisSlideIndex] }}
+                        </h3>
+                        <p>
+                            {{ slides.texts[thisSlideIndex] }}
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="thumbs" @mouseover="stopAutoplay" @mouseout="startAutoplay">
+                    <div @click="prevSlide()" class="prev"></div>
+                    <div @click="nextSlide()" class="next"></div>
+                    <div class="thumb active">  
+                        <img class="thumb"
+                        v-for="(thumbImages, index) in slides.images" 
+                        :src="thumbImages" 
+                        @click="changeSlide(index)"
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
