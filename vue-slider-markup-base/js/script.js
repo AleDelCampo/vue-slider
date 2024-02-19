@@ -66,6 +66,7 @@ createApp({
             }
         },
 
+        
         stopAutoplay() {
             clearInterval(this.autoplayTime);
 
